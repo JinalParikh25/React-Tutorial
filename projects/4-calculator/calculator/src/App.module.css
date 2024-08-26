@@ -4,15 +4,3 @@
 }
 
 
-
-.buttonContainer{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.button{
-   width: 50px;
-   height: 50px;
-   margin: 7px;
-}
