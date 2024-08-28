@@ -1,0 +1,21 @@
+.header{
+  font-weight: 700;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+input{
+  width: 100%;
+}
+
+.todo-item{
+  text-align: left;
+}
+
+.todo-row{
+  margin-bottom: 5px;
+}
+
+.todo-button{
+  min-width: 80px;
+}
