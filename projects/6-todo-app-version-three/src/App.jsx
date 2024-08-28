@@ -11,11 +11,11 @@ function App() {
    let [todoItems , setTodoItems] = useState([]);
 
    const AddButton = (name,date) => {
-      let newtodoItems = {
+      setTodoItems((currValue) => [...currValue,
+        {
         name : name,
         date :date
-      }
-      setTodoItems([...todoItems,newtodoItems]);
+      }])
    }
 
    const deleteButtonClicked = (item) => {

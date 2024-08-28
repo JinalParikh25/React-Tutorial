@@ -1,27 +1,39 @@
+import { useRef } from "react";
 import { MdAddToQueue } from "react-icons/md";
 
 function AddTodo({onAddButtonClicked}){
 
-    const onAddButton = (txt,date) => {
-        onAddButtonClicked(txt.value,date.value);
-        txt.value = '';
-        date.value = '';
+    let todoText = useRef();
+    let todoDate = useRef();
+
+    const onAddButton = (event) => { 
+        event.preventDefault();
+        onAddButtonClicked(todoText.current.value,todoDate.current.value);
+        todoText.current.value = "";
+        todoDate.current.value = "";
     }
 
     return <div className="container text-center">
-                <div className="row todo-row">
+                <form className="row todo-row" 
+                      onSubmit={onAddButton}>
                     <div className="col-6">
-                        <input type="text" id='txt' placeholder="Enter Todo here"></input>
+                        <input type="text" 
+                               id='txt'
+                               ref={todoText}
+                               placeholder="Enter Todo here">
+                        </input>
                     </div>
                     <div className="col-4">
-                        <input type="date" id='date'></input>
+                        <input type="date"
+                               ref={todoDate}
+                               id='date'>
+                        </input>
                     </div>
                     <div className="col-2">
-                        <button type="button" 
-                                className="btn btn-success todo-button"
-                                onClick={() => onAddButton(txt,date)}><MdAddToQueue /></button>
+                        <button className="btn btn-success todo-button"
+                                ><MdAddToQueue /></button>
                     </div>
-                </div>
+                </form>
             </div>
 }
 
