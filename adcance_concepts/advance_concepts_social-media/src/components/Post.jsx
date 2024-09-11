@@ -6,7 +6,7 @@ import { PostContext } from "../store/PostStore";
 const Post = (prop) => {
 
    let {deletePost} = useContext(PostContext)
-    console.log(prop.item);
+    
 
     return (
         <>
