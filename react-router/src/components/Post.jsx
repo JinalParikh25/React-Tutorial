@@ -13,8 +13,6 @@ const Post = (prop) => {
             <div className={`${style.postbody} card`} style={{width: "25rem"}}>
                 <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle" onClick={() => deletePost(prop.item.id)}>
                 <MdDeleteOutline />
-                    {/* <span className="visually-hidden"
-                    onClick={deletePost}></span> */}
                 </span>
                     <div className="card-body">
                         <h5 className="card-title">{prop.item.title}</h5>

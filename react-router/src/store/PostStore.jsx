@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useReducer } from "react";
-import { useState, createContext } from "react";
+import {  createContext } from "react";
 
 export const PostContext =  createContext({
     handleOnSelectTab : () => {},
@@ -28,18 +27,7 @@ const PostListReducer = (currentValue,action) => {
 }   
 
 const PostContextProvider = (prop) => {
-    let [fetching,setFetching] = useState(true);
     
-    useEffect(() => {
-        setFetching(true);
-        fetch('https://dummyjson.com/posts')
-        .then(res => res.json())
-        .then((obj) => {
-            addInitialPosts(obj.posts);
-            setFetching(false);
-        });
-    }, []);
-
     
     let [postList,dispatchPostList] = useReducer(PostListReducer,[]);  
 
@@ -54,15 +42,7 @@ const PostContextProvider = (prop) => {
         dispatchPostList(newPost);
     }
 
-    const addInitialPosts = (posts) => {
-        dispatchPostList({
-          type: "ADD_INITIAL_POSTS",
-          payload: {
-            posts,
-          },
-        });
-      };
-
+    
     const deletePost = (postId) =>{
         const postToDelete = {
             type : "DeletePost",
@@ -74,7 +54,7 @@ const PostContextProvider = (prop) => {
     }
 
     return (
-        <PostContext.Provider value={{addPost,postList,deletePost,fetching}}>
+        <PostContext.Provider value={{addPost,postList,deletePost}}>
             {prop.children}
         </PostContext.Provider>
     )
